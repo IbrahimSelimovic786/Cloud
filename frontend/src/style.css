@@ -1,0 +1,211 @@
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+  }
+
+  .navbar-light .navbar-toggler-icon {
+    background-color: white;
+  }
+
+  /* Dropdown styles */
+  .navbar-light .navbar-nav .nav-item.dropdown:hover > .nav-link {
+    color: white;
+  }
+
+  .navbar-light .navbar-nav .nav-item.dropdown:hover > .nav-link:hover {
+    color: white;
+  }
+
+  .navbar-light .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+    background-color: #191c24;
+  }
+
+  .navbar-light .navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-item {
+    color: white;
+  }
+
+  .navbar-light
+    .navbar-nav
+    .nav-item.dropdown
+    .dropdown-menu
+    .dropdown-divider {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar-light
+    .navbar-nav
+    .nav-item.dropdown
+    .dropdown-menu
+    .dropdown-item:hover {
+    background-color: #191c24;
+  }
+
+  p {
+    color: azure;
+  }
+
+  /* Other styles */
+  body {
+    color: white;
+  }
+
+  nav {
+    background-color: #191c24;
+  }
+
+  body {
+    background-color: black;
+  }
+
+  .col-pro-banner {
+    background-color: #bf165f;
+    border-radius: 0.5rem;
+  }
+
+  .bg-dash {
+    background-color: #191c24;
+    border-radius: 0.5rem;
+    
+  }
+  .bg-dash img {
+    max-width: 100%; /* Make the image responsive within its container */
+    height: auto;
+     /* Remove any extra space below the image */
+    margin: 0 auto; /* Center the image horizontally within its container */
+  }
+  .banner{
+    background-image:url(/src/img/banner-gradient.jpg);
+  }
+  .hero-banner {
+    background-image: url(/src/img/banner-9.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 50vh; /* Make the banner cover the entire viewport height */
+    text-align: center;
+    color: white; /* Add text color as per your design */
+  }
+  .centered-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .icon{
+    font-size: 24px;
+  }
+  .icon-box-success {
+    background-color: #16302A;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    height: 50px; /* Adjust the height to your preference */
+    width: 50px;  /* Adjust the width to your preference */
+  }
+  .mdi-arrow-top-right{
+    color: #00D25B;
+
+  }
+  .icon-box-danger{
+    background-color: #322028;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    height: 50px; /* Adjust the height to your preference */
+    width: 50px;  /* Adjust the width to your preference */
+  }
+
+  .mdi-arrow-bottom-left{
+    color: #FC424A;
+  }
+
+  .muted{
+    color: #6C7293;
+  }
+  .transcation{
+    width: 30%;
+  }
+  .services{
+    width: 65%;
+  }
+  .center{
+    display: block;
+  text-align: center;
+  text-align: center;
+  }
+  .text-left{
+    text-align: left;
+  }
+
+  .text-right{
+    text-align: right;
+  }
+  .icon-service{
+    font-size: 35px;
+    width: 40px;
+    border-radius: 5px;
+  }
+ 
+  .left-section {
+    display: flex;
+    align-items: center;
+}
+
+.preview-icon {
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+.text-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.bold-text {
+    font-weight: bold;
+    text-align: left;
+}
+
+.muted-text {
+    color: #888;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column; /* Updated to column direction */
+    align-items: flex-end; /* Align to the right */
+}
+
+.time-text {
+    margin-bottom: 5px; /* Adjust margin as needed */
+}
+.container-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.icon-service-sale{
+  font-size: 70px;
+  width: 40px;
+  /* border-radius: 5px; */
+}
+.transparent-box table {
+  background: transparent; /* Make the table background transparent */
+}
+table{
+  background-color: #191c24;
+}
+.transparent-box th,
+.transparent-box td {
+    background: transparent; /* Set the background color to transparent for headers and cells */
+}
+.row-c {
+  display: flex;
+  justify-content: center; /* Horizontally center the items */
+  align-items: center; /* Vertically center the items */
+   /* Adjust the height of the row as needed */
+}
+
+.nav-pills li:hover{
+  background-color: rgb(59, 59, 70);
+  border-radius: 10px;
+}
+
