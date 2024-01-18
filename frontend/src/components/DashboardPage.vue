@@ -1,5 +1,14 @@
 <template>
   <div>
+    <div class="container text-center bg-dash">
+      <div>
+        <h2>User Details</h2>
+        <p>Name: {{ user.name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Phone: {{ user.phone }}</p>
+        <p>Gender: {{ user.gender }}</p>
+      </div>
+    </div>
     <!-- UPGARDE TO PRO -->
 
     <div class="banner col-pro-banner col p-5 text-center">
@@ -540,8 +549,27 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "DashboardPage",
+  data() {
+    return {
+      user: {},
+    };
+  },
+  created() {
+    axios.get('http://localhost:8085/api/hii', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+      },
+    })
+      .then((response) => {
+        this.user = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 };
 </script>
 
