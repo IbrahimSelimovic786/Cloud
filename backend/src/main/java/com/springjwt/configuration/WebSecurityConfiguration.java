@@ -34,7 +34,7 @@ public class WebSecurityConfiguration {
             .cors().and()
             .authorizeHttpRequests(
                     auth -> auth
-                            .requestMatchers("/", "/authenticate", "/sign-up", "/forgotpassword", "/reset", "/reset_password**").permitAll()
+                            .requestMatchers("/", "/authenticate", "/sign-up", "/forgotpassword", "/reset", "/reset_password**","/health").permitAll()
                             .requestMatchers("/api/**").authenticated()
                             .anyRequest().authenticated()
             )

@@ -1,31 +1,14 @@
 version: '3.8'
 
 services:
-  mysql:
-    image: mysql:8.0
-    container_name: mysql-db
-    volumes:
-      - mysql-data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
-      MYSQL_DATABASE: ${DB_NAME:-db}
-    ports:
-      - "3306:3306"
-    networks:
-      - app-network
-    restart: always
-    
-
   backend:
     build: ./backend
     container_name: spring-backend
-    depends_on:
-      - mysql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${DB_NAME:-db}?useSSL=false&allowPublicKeyRetrieval=true
-      SPRING_DATASOURCE_USERNAME: ${DB_USER:-root}
-      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD:-root}
-      APP_CLIENT_URL: http://frontend
+      SPRING_DATASOURCE_URL: jdbc:mysql://${RDS_ENDPOINT}:3306/${DB_NAME}?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      APP_CLIENT_URL: http://${ALB_DNS_NAME}
     ports:
       - "8085:8085"
     networks:
@@ -33,7 +16,6 @@ services:
     volumes:
       - ./backend/src:/workspace/app/src
     restart: always
-    
 
   frontend:
     build: ./frontend
@@ -47,12 +29,9 @@ services:
       - app-network
     depends_on:
       - backend
-
+    environment:
+      - VUE_APP_API_URL=http://${ALB_DNS_NAME}/api
 
 networks:
   app-network:
     driver: bridge
-
-volumes:
-  mysql-data:
-    driver: local
