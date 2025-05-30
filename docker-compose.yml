@@ -5,7 +5,7 @@ services:
     build: ./backend
     container_name: spring-backend
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://${RDS_ENDPOINT}:3306/${DB_NAME}?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://${RDS_ENDPOINT}:3306/projectdb?useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: ${DB_USER}
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
       APP_CLIENT_URL: http://${ALB_DNS_NAME}
@@ -20,6 +20,8 @@ services:
   frontend:
     build: ./frontend
     container_name: vue-frontend
+    environment:
+      - VUE_APP_API_URL=http://${ALB_DNS_NAME}/api
     volumes:
       - ./frontend/src:/app/src
       - /app/node_modules
@@ -29,8 +31,6 @@ services:
       - app-network
     depends_on:
       - backend
-    environment:
-      - VUE_APP_API_URL=http://${ALB_DNS_NAME}/api
 
 networks:
   app-network:

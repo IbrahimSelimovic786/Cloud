@@ -1,4 +1,3 @@
-# outputs.tf
 output "alb_dns_name" {
   description = "DNS name of the load balancer"
   value       = aws_lb.app_alb.dns_name
@@ -6,17 +5,17 @@ output "alb_dns_name" {
 
 output "alb_zone_id" {
   description = "Zone ID of the load balancer"
-  value       = aws_lb.main.zone_id
+  value       = aws_lb.app_alb.zone_id
 }
 
 output "application_url" {
   description = "Application URL"
-  value       = "http://${aws_lb.main.dns_name}"
+  value       = "http://${aws_lb.app_alb.dns_name}"
 }
 
 output "api_url" {
   description = "API URL"
-  value       = "http://${aws_lb.main.dns_name}/api"
+  value       = "http://${aws_lb.app_alb.dns_name}/api"
 }
 
 output "rds_endpoint" {
@@ -25,22 +24,12 @@ output "rds_endpoint" {
   sensitive   = true
 }
 
-output "frontend_instance_id" {
-  description = "Frontend EC2 instance ID"
-  value       = aws_instance.frontend.id
+output "instance_ids" {
+  description = "EC2 Instance IDs"
+  value       = aws_instance.app_instance[*].id
 }
 
-output "backend_instance_id" {
-  description = "Backend EC2 instance ID"
-  value       = aws_instance.backend.id
-}
-
-output "frontend_public_ip" {
-  description = "Frontend instance public IP"
-  value       = aws_instance.frontend.public_ip
-}
-
-output "backend_public_ip" {
-  description = "Backend instance public IP"
-  value       = aws_instance.backend.public_ip
+output "instance_public_ips" {
+  description = "EC2 Instance Public IPs"
+  value       = aws_instance.app_instance[*].public_ip
 }
