@@ -1,24 +1,45 @@
-variable "db_username" {
-  description = "RDS korisničko ime"
+variable "aws_region" {
+  description = "AWS region"
   type        = string
-  default     = "admin"
+  default     = "us-east-1"
+}
+
+variable "project_name" {
+  description = "Name of the project"
+  type        = string
+  default     = "fullstack-app"
+}
+
+variable "git_repo_url" {
+  description = "Git repository URL"
+  type        = string
 }
 
 variable "db_password" {
-  description = "RDS lozinka"
+  description = "Database password"
   type        = string
   sensitive   = true
-  default     = "Admin1234!"
 }
 
-variable "repo_url" {
-  description = "GitHub repo URL"
+variable "db_name" {
+  description = "Database name"
   type        = string
-  default     = "https://github.com/IbrahimSelimovic786/Cloud.git"
+  default     = "db"
 }
 
-variable "key_pair_name" {
-  description = "AWS EC2 key pair ime"
+variable "db_username" {
+  description = "Database username"
   type        = string
-  default     = "cloud9-key"
+  default     = "root"
+}
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+  default     = "t3.micro"
+}
+
+variable "key_name" {
+  description = "EC2 Key Pair name"
+  type        = string
 }

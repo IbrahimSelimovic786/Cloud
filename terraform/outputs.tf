@@ -1,11 +1,14 @@
-output "ec2_instance_a_public_ip" {
-  value = aws_instance.app_instance_a.public_ip
-}
-
-output "ec2_instance_b_public_ip" {
-  value = aws_instance.app_instance_b.public_ip
+output "alb_dns_name" {
+  description = "DNS name of the load balancer"
+  value       = aws_lb.main.dns_name
 }
 
 output "rds_endpoint" {
-  value = aws_db_instance.app_db.endpoint
+  description = "RDS instance endpoint"
+  value       = aws_db_instance.mysql.endpoint
+}
+
+output "application_url" {
+  description = "Application URL"
+  value       = "http://${aws_lb.main.dns_name}"
 }

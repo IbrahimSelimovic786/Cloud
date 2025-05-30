@@ -5,10 +5,10 @@ services:
     build: ./backend
     container_name: spring-backend
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://${RDS_ENDPOINT}:3306/projectdb?useSSL=false&allowPublicKeyRetrieval=true
-      SPRING_DATASOURCE_USERNAME: ${DB_USER}
-      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
-      APP_CLIENT_URL: http://${ALB_DNS_NAME}
+      SPRING_DATASOURCE_URL: jdbc:mysql://your-rds-endpoint:3306/db?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root123456
+      APP_CLIENT_URL: http://your-alb-dns-name
     ports:
       - "8085:8085"
     networks:
@@ -16,12 +16,11 @@ services:
     volumes:
       - ./backend/src:/workspace/app/src
     restart: always
+    
 
   frontend:
     build: ./frontend
     container_name: vue-frontend
-    environment:
-      - VUE_APP_API_URL=http://${ALB_DNS_NAME}/api
     volumes:
       - ./frontend/src:/app/src
       - /app/node_modules
@@ -31,7 +30,11 @@ services:
       - app-network
     depends_on:
       - backend
+    environment:
+      - VUE_APP_API_URL=http://your-alb-dns-name/api
 
 networks:
   app-network:
     driver: bridge
+
+# MySQL section removed - using RDS instead
