@@ -1,0 +1,12 @@
+git clone https://github.com/IbrahimSelimovic786/Cloud
+cd Cloud
+cd terraform
+aws ec2 create-key-pair --key-name ibrahim-app --query 'KeyMaterial' --output text > ibrahim-app.pem
+chmod 400 ibrahim-app.pem
+sudo yum update -y
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum install -y terraform
+terraform init
+terraform plan 
+terraform apply 
